@@ -1,5 +1,6 @@
 .venv/
 *.pyc
+valores.sqlite
 __pycache__/
 instance/
 .cache/
