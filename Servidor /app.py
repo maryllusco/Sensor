@@ -37,4 +37,5 @@ def sensor():
     )
     db.commit()
     cerrarConexion()
-    return "OK"
+    res = {"resultado": "ok"} 
+    return jsonify (res)
