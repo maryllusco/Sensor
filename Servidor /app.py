@@ -26,9 +26,15 @@ app.teardown_appcontext(cerrarConexion)
 @app.route("/api/sensor", methods=['POST'])
 def sensor():
     db = abrirConexion()
+    cursor = db.cursor()
     datos = request.json
     nombre = datos ["nombre"]
     valor = datos ["valor"]
     print (f"nombre del sensor{nombre}, valor: {valor}")
+    cursor.execute(
+        "INSERT INTO valores (nombre, valor) VALUES (?, ?);",
+        (datos["nombre"], datos["valor"])
+    )
+    db.commit()
     cerrarConexion()
     return "OK"
